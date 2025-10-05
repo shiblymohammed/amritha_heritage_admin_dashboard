@@ -24,7 +24,7 @@ export default function DailySpecialsPage() {
   const [count, setCount] = useState(0);
   const [next, setNext] = useState<string | null>(null);
   const [previous, setPrevious] = useState<string | null>(null);
-  const pageSize = items.length || 10; // best-effort display size
+  // const pageSize = items.length || 10; // best-effort display size - unused
 
   async function refresh(targetPage = page) {
     try {
