@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import client fonts to match front-site aesthetics */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Base styles for admin panel */
+html, body, #root { height: 100%; }
+body { @apply bg-background text-foreground; }
