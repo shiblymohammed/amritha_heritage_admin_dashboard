@@ -1,7 +1,19 @@
 import axios from 'axios';
 import { getAccessToken, refreshAccessToken, logout } from './auth';
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+// Determine API base URL with sensible production fallback
+const envBase = import.meta.env.VITE_API_BASE_URL;
+const fallbackProdBase = 'https://amritha-heritage-backend.onrender.com/api';
+let baseURL = envBase;
+if (!baseURL) {
+  try {
+    const host = typeof window !== 'undefined' ? window.location.hostname : '';
+    const isProdHost = host.endsWith('vercel.app') || host.includes('amrithaheritage.com');
+    baseURL = isProdHost ? fallbackProdBase : 'http://127.0.0.1:8000/api';
+  } catch {
+    baseURL = 'http://127.0.0.1:8000/api';
+  }
+}
 
 export const api = axios.create({
   baseURL,
