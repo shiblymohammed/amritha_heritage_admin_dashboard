@@ -1,10 +1,12 @@
 import axios from 'axios';
 import { getAccessToken, refreshAccessToken, logout } from './auth';
 
-// Determine API base URL with sensible production fallback
+// Determine API base URL with production fallback for Vercel
 const envBase = import.meta.env.VITE_API_BASE_URL;
 const fallbackProdBase = 'https://amritha-heritage-backend.onrender.com/api';
 let baseURL = envBase;
+
+// If no env var set, detect production environment and use fallback
 if (!baseURL) {
   try {
     const host = typeof window !== 'undefined' ? window.location.hostname : '';
